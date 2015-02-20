@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.views.generic.base import TemplateView
 from pombola.kenya.views import KEPersonDetail, KEPersonDetailAppearances, KEHelpApiView
@@ -19,9 +20,13 @@ urlpatterns = patterns('',
     url(r'^person/(?P<slug>[-\w]+)/appearances/$',
         KEPersonDetailAppearances.as_view(sub_page='appearances'),
         name='person'),
-    url(r'^help/api/?$',
-        KEHelpApiView.as_view() )
 )
+
+if settings.POPIT_API_URL:
+    urlpatterns.append(
+        url(r'^help/api/?$',
+            KEHelpApiView.as_view() )
+    )
 
 # Create the two County Performance pages:
 
