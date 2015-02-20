@@ -383,6 +383,6 @@ class ShujaazFinalistsView(TemplateView):
 class KEHelpApiView(HelpApiView):
 
     def get_context_data(self, **kwargs):
-        context = super(HelpApiView, self).get_context_data(**kwargs)
+        context = super(KEHelpApiView, self).get_context_data(**kwargs)
         context['dump_base_path'] = ''
         return context
