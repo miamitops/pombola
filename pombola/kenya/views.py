@@ -19,7 +19,7 @@ from .forms import CountyPerformancePetitionForm, CountyPerformanceSenateForm
 from django.shortcuts import redirect
 
 from pombola.core.models import Person
-from pombola.core.views import PersonDetail, PersonDetailSub
+from pombola.core.views import PersonDetail, PersonDetailSub, HelpApiView
 from pombola.experiments.models import Experiment, Event
 from pombola.feedback.models import Feedback
 from pombola.hansard.views import HansardPersonMixin
@@ -377,4 +377,12 @@ class ShujaazFinalistsView(TemplateView):
         half = len(finalists) / 2
         context['finalists_column_1'] = finalists[:half]
         context['finalists_column_2'] = finalists[half:]
+        return context
+
+
+class KEHelpApiView(HelpApiView):
+
+    def get_context_data(self, **kwargs):
+        context = super(HelpApiView, self).get_context_data(**kwargs)
+        context['dump_base_path'] = ''
         return context

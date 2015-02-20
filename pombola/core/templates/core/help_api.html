@@ -6,7 +6,11 @@
 
 <h1>Available APIs for this site</h1>
 
+{% if dump_base_path %}
+
 <p>This site offers a number of ways of accessing its data programmatically:</p>
+
+{% endif %}
 
 <h2>RESTful API</h2>
 
@@ -24,6 +28,8 @@ view of this data at
 also <a href="http://popit.poplus.org/docs/api/">documentation
 for PopIt's API here</a>.
 </p>
+
+{% if dump_base_path %}
 
 <h2>Daily JSON Data Dumps</h2>
 
@@ -73,6 +79,8 @@ files may be too large to be imported by that method.</p>
 <li><a href="{{ dump_base_path }}organizations.json">Organization data in a JSON array</a></li>
 <li><a href="{{ dump_base_path }}memberships.json">Membership data in a JSON array</a></li>
 </ul>
+
+{% endif %}
 
 <h2>License</h2>
 
